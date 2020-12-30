@@ -116,7 +116,7 @@ function isImmunity(allComments, node) {
 
 function addImport(file, key, nodePath, types) {
   const list = file.file.ast.program.body || [];
-  const item = list.filter((item) => item.type === 'ImportDeclaration' && item.source.value === './number-acc.js')[0];
+  const item = list.filter((item) => item.type === 'ImportDeclaration' && item.source.value === 'babel-plugin-number-calc-autorepair/dist/number-acc.js')[0];
   if (item) {
     const existOne = item.specifiers.filter((item) => item.imported.type === 'Identifier' && item.imported.name === key)[0];
     if (!existOne) {
@@ -126,6 +126,6 @@ function addImport(file, key, nodePath, types) {
     }
     return existOne.local.name
   } else {
-    return addNamed(nodePath, key, './number-acc.js').name
+    return addNamed(nodePath, key, 'babel-plugin-number-calc-autorepair/dist/number-acc.js').name
   }
 }
