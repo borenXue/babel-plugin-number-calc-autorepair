@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-number-calc-autorepair",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "auto repair number calculate",
   "homepage": "https://github.com/borenXue/babel-plugin-number-calc-autorepair#readme",
   "bugs": {
