@@ -5,7 +5,7 @@
 * 自动修复的运算符: `+`、`-`、`*`、`/` 以及 `+=`、`-=`、`*=`、`/=`
 * `TODO:` `待自动修复的运算符: `: `%`、`%=`、`++`、`--`
 
-[示例项目](https://github.com/borenXue/babel-plugin-number-calc-autorepair/test-demo): 运行 `npm install && npm run build`
+[使用示例](https://github.com/borenXue/babel-plugin-number-calc-autorepair/tree/main/test-demo): 运行 `npm install && npm run build`
 
 <br/>
 
