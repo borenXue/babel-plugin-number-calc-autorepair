@@ -1,4 +1,4 @@
-sudo: false
+os: linux
 language: node_js
 
 # node_js:
@@ -22,11 +22,9 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          echo $GITHUB_TOKEN;
-          echo $GH_TOKEN;
-          echo $NPM_TOKEN;
+          ls;
           npm run build;
-          npm run semantic-release
+          npm run semantic-release;
         on:
           branch: main
 
