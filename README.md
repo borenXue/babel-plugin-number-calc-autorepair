@@ -1,11 +1,11 @@
-<red>测试中, 生产环境请等待 1.0 版本</red>
-
-<br/>
-
 # babel-plugin-number-calc-autorepair
 
+* 自动修复 JavaScript 引擎中的浮点陷阱
+* 支持基于注释的豁免, 可豁免整个文件或只豁免某处代码
+* 自动修复的运算符: `+`、`-`、`*`、`/` 以及 `+=`、`-=`、`*=`、`/=`
+* `TODO:` `待自动修复的运算符: `: `%`、`%=`、`++`、`--`
 
-自动修复 JavaScript 引擎中的浮点陷阱, 支持基于注释的豁免, 可豁免整个文件或只豁免某处代码
+[示例项目](https://github.com/borenXue/babel-plugin-number-calc-autorepair/test-demo): 运行 `npm install && npm run build`
 
 <br/>
 
@@ -33,16 +33,30 @@ npm i -D babel-plugin-number-calc-autorepair
 > 输入
 
 ```javascript
-function calc(a, b) { return a + b - 10 }
+function calcAdd(a, b) {
+  return a + b;
+}
+
+function calcAll(a, b, c, d) {
+  return a + b * c / d;
+}
 ```
 
 > 输出
 
 ```javascript
-// number-acc.js 代码实现可参考下方
-import { accAdd as _accAdd, accSub as _accSub } from "./number-acc.js";
+// _numberAcc.accAdd: 内部会判断变量 a 的类型, 非数字类型时, 插件不做处理
+// 导出对象名确保唯一性: 如果已有 _numberAcc 变量, 则导出对象命名为 _numberAcc2, 依次类推
 
-function calc(a, b) { return _accSub(_accAdd(a, b), 10) }
+var _numberAcc = require('babel-plugin-number-calc-autorepair/dist/number-acc.js');
+
+function calcAdd(a, b) {
+  return _numberAcc.accAdd(a, b);
+}
+
+function calcAll(a, b, c, d) {
+  return _numberAcc.accAdd(a, _numberAcc.accDiv(_numberAcc.accMulti(b, c), d));
+}
 ```
 
 
